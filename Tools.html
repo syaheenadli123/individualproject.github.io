@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>About me</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
+    <style>
+        body,
+        h1,
+        h2,
+        h3,
+        h4,
+        h5 {
+            font-family: "Poppins", sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-size: 16px;
+            line-height: 1.6;
+            background-color: #222;
+            color: #fff;
+        }
+
+        #main {
+            transition: margin-left 0.5s;
+        }
+
+        .w3-sidebar {
+            height: 100%;
+            width: 0;
+            position: fixed;
+            z-index: 1;
+            top: 0;
+            left: 0;
+            background-color: #111;
+            overflow-x: hidden;
+            transition: 0.5s;
+            padding-top: 60px;
+        }
+
+        .w3-sidebar a {
+            padding: 8px 8px 8px 32px;
+            text-decoration: none;
+            font-size: 18px;
+            color: white;
+            display: block;
+            transition: 0.3s;
+        }
+
+        .w3-sidebar a:hover {
+            color: #f1f1f1;
+        }
+
+        .w3-sidebar .w3-bar-item {
+            padding: 15px;
+            color: white;
+        }
+
+        .w3-black {
+            background-color: #333;
+            color: white;
+            padding: 15px;
+        }
+
+        .w3-black a:hover {
+            background-color: #555;
+        }
+
+        .w3-padding-80 {
+            padding-top: 80px;
+        }
+		
+.header-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding-left: 10px;
+    position: fixed;
+    width: 100%;
+    z-index: 2;
+}
+
+.header-container h1 {
+    margin: 0;
+}
+
+
+        .calculator-container,
+        .bmi-calculator-container,
+        .zakat-calculator-container,
+        .unit-converter-container {
+            margin-top: 30px;
+            padding: 20px;
+            background-color: #f2f2f2;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .calculator-container h1,
+        .bmi-calculator-container h1,
+        .zakat-calculator-container h1,
+        .unit-converter-container h1 {
+            color: #333;
+        }
+
+        .calculator-container input,
+        .bmi-calculator-container input,
+        .zakat-calculator-container input,
+        .unit-converter-container input,
+        .unit-converter-container select {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        .calculator-container button,
+        .bmi-calculator-container button,
+        .zakat-calculator-container button,
+        .unit-converter-container button {
+            width: 100%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .calculator-container button:hover,
+        .bmi-calculator-container button:hover,
+        .zakat-calculator-container button:hover,
+        .unit-converter-container button:hover {
+            background-color: #45a049;
+        }
+
+        .unit-result,
+        .bmi-result {
+            margin-top: 20px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .zakat-calculator-container #resultDiv {
+            margin-top: 20px;
+            font-weight: bold;
+            color: #333;
+        }
+    </style>
+    <script>
+        function calculate(operator) {
+            let no1 = parseFloat(document.getElementById("no1").value);
+            let no2 = parseFloat(document.getElementById("no2").value);
+            let total = 0;
+
+            switch (operator) {
+                case '+':
+                    total = no1 + no2;
+                    break;
+                case '-':
+                    total = no1 - no2;
+                    break;
+                case '*':
+                    total = no1 * no2;
+                    break;
+                case '/':
+                    total = no1 / no2;
+                    break;
+                default:
+                    total = "Invalid operator";
+            }
+
+            document.getElementById("total").innerHTML = "Result: " + total;
+            document.getElementById("total").style.color = "green";
+            document.getElementById("total").style.fontWeight = "bold";
+        }
+
+        function calculateBMI() {
+            let height = parseFloat(document.getElementById("height").value);
+            let weight = parseFloat(document.getElementById("weight").value);
+            let bmi = (weight / ((height / 100) * (height / 100))).toFixed(2);
+            let bmiResultDiv = document.getElementById("bmiResult");
+
+            bmiResultDiv.innerHTML = "Your BMI: " + bmi;
+
+           
+            if (bmi < 18.6) {
+                bmiResultDiv.style.backgroundColor = "blue";
+            } else if (bmi >= 18.6 && bmi < 24.9) {
+                bmiResultDiv.style.backgroundColor = "green";
+            } else if (bmi >= 25 && bmi < 29.9) {
+                bmiResultDiv.style.backgroundColor = "yellow";
+            } else if (bmi >= 30 && bmi < 39.9) {
+                bmiResultDiv.style.backgroundColor = "orange";
+            } else {
+                bmiResultDiv.style.backgroundColor = "red";
+            }
+
+            bmiResultDiv.style.padding = "10px";
+            bmiResultDiv.style.fontWeight = "bold";
+        }
+
+        function ZakatCalculator() {
+            let no1 = parseInt(document.getElementById("zakat1").value);
+            let total = no1 * 0.025;
+
+            document.getElementById("ZakatDiv").innerHTML = "<h3>Your Zakat Yearly income :" + total + "</h3>";
+        }
+
+        function convertCMtoMeter() {
+            let cm = parseFloat(document.getElementById("unitInput").value);
+            let meter = cm / 100;
+            document.getElementById("unitResult").innerHTML = "Result: " + meter + " meters";
+        }
+
+        function convertMeterToCM() {
+            let meter = parseFloat(document.getElementById("unitInput").value);
+            let cm = meter * 100;
+            document.getElementById("unitResult").innerHTML = "Result: " + cm + " centimeters";
+        }
+
+        function convertMeterToKM() {
+            let meter = parseFloat(document.getElementById("unitInput").value);
+            let km = meter / 1000;
+            document.getElementById("unitResult").innerHTML = "Result: " + km + " kilometers";
+        }
+
+        function convertKMToMeter() {
+            let km = parseFloat(document.getElementById("unitInput").value);
+            let meter = km * 1000;
+            document.getElementById("unitResult").innerHTML = "Result: " + meter + " meters";
+        }
+
+        function convertCelsiusToFahrenheit() {
+            let celsius = parseFloat(document.getElementById("unitInput").value);
+            let fahrenheit = (celsius * 9 / 5) + 32;
+            document.getElementById("unitResult").innerHTML = "Result: " + fahrenheit + " Fahrenheit";
+        }
+
+        function convertUnit() {
+            let conversionType = document.getElementById("unitSelect").value;
+
+            switch (conversionType) {
+                case 'cmToMeter':
+                    convertCMtoMeter();
+                    break;
+                case 'meterToCM':
+                    convertMeterToCM();
+                    break;
+                case 'meterToKM':
+                    convertMeterToKM();
+                    break;
+                case 'kmToMeter':
+                    convertKMToMeter();
+                    break;
+                case 'celsiusToFahrenheit':
+                    convertCelsiusToFahrenheit();
+                    break;
+                default:
+                    document.getElementById("unitResult").innerHTML = "Invalid conversion type";
+            }
+        }
+
+        function w3_open_tools() {
+            document.getElementById("main").style.marginLeft = "25%";
+            document.getElementById("toolsSidebar").style.width = "25%";
+            document.getElementById("toolsSidebar").style.display = "block";
+            document.getElementById("openNavTools").style.display = 'none';
+        }
+
+        function w3_close_tools() {
+            document.getElementById("main").style.marginLeft = "0%";
+            document.getElementById("toolsSidebar").style.display = "none";
+            document.getElementById("openNavTools").style.display = "inline-block";
+        }
+    </script>
+</head>
+
+<body>
+    <!-- Include the sidebar and main content here -->
+    <div class="w3-sidebar w3-bar-block w3-card w3-animate-left" style="display:none" id="mySidebar">
+         <img src="syaheenlogo1.jpg" style="width:100%">
+        <button class="w3-bar-item w3-button w3-large" onclick="w3_close()">Close &times;</button>
+        <a href="index.html" class="w3-bar-item w3-button">Home</a>
+        <a href="Personal.html" class="w3-bar-item w3-button">Personal</a>
+        <a href="Tools.html" class="w3-bar-item w3-button">Tools</a>
+    </div>
+    <div id="main">
+
+        <div class="w3-black header-container">
+            <button id="openNav" class="w3-button w3-black w3-xlarge" onclick="w3_open()">☰</button>
+            <div class="w3-padding-00">
+                <h1>Welcome to My Web</h1>
+            </div>
+        </div>
+
+        <div id="includeContent"></div>
+
+        <div class="w3-container" id="contact">
+            <h1 class="w3-xxxlarge w3-text-black"><b>Tools</b></h1>
+            <hr style="width:50px;border:5px solid Black" class="w3-round">
+            
+            <!-- Calculator Section -->
+            <div class="calculator-container w3-container">
+                <h1>Simple Calculator</h1>
+                <hr style="width:50px;border:5px solid Black" class="w3-round">
+                <div class="w3-section">
+                    <input class="w3-input w3-border" type="number" id="no1" placeholder="Enter no1">
+                </div>
+                <br>
+                <div class="w3-section">
+                    <input class="w3-input w3-border" type="number" id="no2" placeholder="Enter no2">
+                </div>
+                <br>
+                <div class="w3-section">
+                    <input class="w3-button w3-block w3-padding-large w3-black w3-margin-bottom" type="button" value="+"
+                        onclick="calculate('+')">
+                </div>
+                <div class="w3-section">
+                    <input class="w3-button w3-block w3-padding-large w3-black w3-margin-bottom" type="button" value="-"
+                        onclick="calculate('-')">
+                </div>
+                <div class="w3-section">
+                    <input class="w3-button w3-block w3-padding-large w3-black w3-margin-bottom" type="button" value="*"
+                        onclick="calculate('*')">
+                </div>
+                <div class="w3-section">
+                    <input class="w3-button w3-block w3-padding-large w3-black w3-margin-bottom" type="button" value="/"
+                        onclick="calculate('/')">
+                </div>
+                <div id="total" class="w3-section w3-text-black"></div>
+            </div>
+
+            <!-- BMI Calculator Section -->
+            <div class="bmi-calculator-container w3-container">
+                <h1>BMI Calculator</h1>
+                <hr style="width:50px;border:5px solid Black" class="w3-round">
+                <div class="w3-section">
+                    <input type="number" id="height" class="w3-input w3-border" placeholder="Enter your height in CM">
+                </div>
+                <div class="w3-section">
+                    <input type="number" id="weight" class="w3-input w3-border" placeholder="Enter your weight in KG">
+                </div>
+                <div class="w3-section">
+                    <input type="button" value="Check BMI"
+                        class="w3-button w3-block w3-padding-large w3-black w3-margin-bottom" onclick="calculateBMI()">
+                </div>
+                <div id="bmiResult" class="w3-section w3-text-white"></div>
+            </div>
+
+            <!-- Zakat Calculator Section -->
+           <div class="zakat-calculator-container w3-container">
+		<h1>Zakat Calculator</h1>
+			<hr style="width:50px;border:5px solid Black" class="w3-round">
+			<input type="number" id="zakat1" placeholder="Enter your yearly income">
+			<br>
+			<input type="submit"  value="calculate" class="w3-button w3-block w3-padding-large w3-black w3-margin-bottom" onclick="ZakatCalculator()">Calculate
+			<div id="ZakatDiv" class="w3-section w3-text-black"></div>
+</div>
+
+            <!-- Unit Converter Section -->
+            <div class="unit-converter-container w3-container">
+                <h1>Unit Converter</h1>
+                <hr style="width:50px;border:5px solid Black" class="w3-round">
+                <div class="w3-section">
+                    <input type="number" id="unitInput" placeholder="Enter value for conversion">
+                </div>
+                <br>
+                <select id="unitSelect" class="w3-select">
+                    <option value="cmToMeter">Centimeter to Meter</option>
+                    <option value="meterToCM">Meter to Centimeter</option>
+                    <option value="meterToKM">Meter to Kilometer</option>
+                    <option value="kmToMeter">Kilometer to Meter</option>
+                    <option value="celsiusToFahrenheit">Celsius to Fahrenheit</option>
+                </select>
+                <br>
+                <input class="w3-button w3-block w3-padding-large w3-black w3-margin-bottom" type="button" value="Convert" onclick="convertUnit()">
+                <div id="unitResult" class="w3-section w3-text-black"></div>
+            </div>
+        </div>
+
+        <script>
+           
+            function w3_open() {
+                document.getElementById("main").style.marginLeft = "25%";
+                document.getElementById("mySidebar").style.width = "25%";
+                document.getElementById("mySidebar").style.display = "block";
+                document.getElementById("openNav").style.display = 'none';
+            }
+
+            function w3_close() {
+                document.getElementById("main").style.marginLeft = "0%";
+                document.getElementById("mySidebar").style.display = "none";
+                document.getElementById("openNav").style.display = "inline-block";
+            }
+        </script>
+
+    </div>
+</body>
+</html>
