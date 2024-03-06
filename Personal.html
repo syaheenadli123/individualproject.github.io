@@ -1,0 +1,276 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>About Me</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        body {
+            font-family: "Poppins", sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-size: 16px;
+            line-height: 1.6;
+            background-color: #1a1a1a;
+            color: #fff;
+        }
+
+        #main {
+            transition: margin-left 0.5s;
+            margin-left: 0;
+        }
+
+        .w3-sidebar {
+            height: 100%;
+            width: 0;
+            position: fixed;
+            z-index: 1;
+            top: 0;
+            left: 0;
+            background-color: #000;
+            overflow-x: hidden;
+            transition: 0.5s;
+            padding-top: 60px;
+        }
+
+        .w3-sidebar a {
+            padding: 8px 8px 8px 32px;
+            text-decoration: none;
+            font-size: 18px;
+            color: white;
+            display: block;
+            transition: 0.3s;
+        }
+
+        .w3-sidebar a:hover {
+            background-color: #555;
+        }
+
+        .w3-sidebar .w3-bar-item {
+            padding: 15px;
+            color: white;
+        }
+
+        .w3-black {
+            background-color: #1a1a1a;
+            color: white;
+            padding: 10px;
+            border-bottom: 1px solid #333;
+            display: flex;
+            align-items: center;
+        }
+
+        .w3-black h1 {
+            margin: 0;
+            font-size: 24px;
+            margin-left: 10px;
+        }
+
+        .header-container {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            background-color: #1a1a1a;
+            color: #fff;
+        }
+
+        .header-container h1 {
+            margin: 0;
+            font-size: 24px;
+        }
+
+        .about-me {
+            display: flex;
+            flex-wrap: wrap;
+            padding: 20px;
+        }
+
+        .about-me img {
+            width: 100%;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        .about-me p {
+            flex: 1;
+            margin-left: 20px;
+            color: #fff;
+        }
+
+        .content-container {
+            padding: 20px;
+            background-color: #333;
+            border-radius: 5px;
+            margin-top: 20px;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+        }
+
+        .skills-container {
+            margin-top: 20px;
+        }
+
+        .skill {
+            margin-bottom: 20px;
+            color: #fff;
+        }
+
+        .skill p {
+            margin-bottom: 5px;
+        }
+
+        .w3-light-grey {
+            background-color: #555;
+            border-radius: 5px;
+            height: 20px;
+            position: relative;
+        }
+
+        .w3-container.w3-center.w3-round-xlarge.w3-white {
+            background-color: #777;
+            border-radius: 5px;
+            height: 100%;
+        }
+		
+		       table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            border: 1px solid #555;
+            padding: 10px;
+            text-align: left;
+            font-size: 16px;
+            color: #fff;
+        }
+
+        th {
+            background-color: #1a1a1a;
+        }
+
+        td {
+            background-color: #333;
+        }
+
+        img.table-logo {
+            width: 50px;
+            border-radius: 5px;
+        }
+
+        a.table-link {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        a.table-link:hover {
+            color: #ccc;
+        }
+		
+		
+    </style>
+</head>
+<body>
+
+<div class="w3-sidebar w3-bar-block w3-card w3-animate-left" style="display:none" id="mySidebar">
+    <img src="syaheenlogo1.jpg" style="width:100%">
+    <button class="w3-bar-item w3-button w3-large" onclick="w3_close()">Close &times;</button>
+    <a href="index.html" class="w3-bar-item w3-button">Home</a>
+    <a href="Personal.html" class="w3-bar-item w3-button">Personal</a>
+    <a href="Tools.html" class="w3-bar-item w3-button">Tools</a>
+</div>
+
+<div id="main">
+    <div class="w3-black header-container">
+        <button id="openNav" class="w3-button w3-black w3-xlarge" onclick="w3_open()">☰</button>
+        <h1>Welcome to My Web</h1>
+    </div>
+
+    <div class="about-me">
+        <img src="syaheen.jpg" alt="Syaheen Image" style="width:45%; border-radius: 10px;">
+        <img src="syaheen1.jpg" alt="Syaheen Image 2" style="width:45%; border-radius: 10px;">
+		<br>
+        <p>About Me</p>
+        <p>Hello, my name is Muhammad Syaheen Adli Bin Mahdhir. I am from Johor Bahru. I am 20 years old and my birthday is 07/10/2004. My matric card number is A22DW0780. I am a computer science student at Universiti Teknologi Malaysia. My hobbies include playing games, hiking, sports, sleeping, and many more.</p>
+    </div>
+	
+<table class="w3-table-all">  
+        <tr>
+            <th>No</th>
+            <th>School</th>
+            <th>Year</th>
+            <th>Logo</th>
+            <th>Link</th>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>NURI KinderGarten</td>
+            <td>2009</td>
+            <td> <img class="table-logo" src="nuri.png" alt="nuri"> </td>
+            <td> <a class="table-link" href="https://www.nuri.com.my/">Nuri KinderGarten</a></td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>Sekolah Kebangsaan Sri Pulai Perdana</td>
+            <td>2011</td>
+            <td> <img class="table-logo" src="skspp.jpeg" alt="skspp logo"> </td>
+            <td><a class="table-link" href="https://www.facebook.com/OFFICIALSKSPP/">Sekolah Kebangsaan Sri Pulai Perdana</a></td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>Sekolah Menengah Kebangsaan Sri Pulai Perdana</td>
+            <td>2017</td>
+            <td> <img class="table-logo" src="smkspp.jpeg" alt="smkspp logo"> </td>
+            <td><a class="table-link" href="https://www.facebook.com/smkspp/">Sekolah Menengah Kebangsaan Sri Pulai Perdana</a></td>
+        </tr>
+    </table>
+    <div class="content-container">
+        <div class="w3-large"><b><i class="fa fa-cog fa-fw w3-margin-right w3-text-white"></i>Skills</b></div>
+        <div class="skills-container">
+            <div class="skill">
+                <p>Sports</p>
+                <div class="w3-black w3-round-xlarge">
+                    <div class="w3-container w3-center w3-round-xlarge w3-white" style="width:70%">70%</div>
+                </div>
+            </div>
+            <div class="skill">
+                <p>Games</p>
+                <div class="w3-black w3-round-xlarge">
+                    <div class="w3-container w3-center w3-round-xlarge w3-white" style="width:60%">60%</div>
+                </div>
+            </div>
+            <div class="skill">
+                <p>Coding</p>
+                <div class="w3-black w3-round-xlarge">
+                    <div class="w3-container w3-center w3-round-xlarge w3-white" style="width:40%">40%</div>
+                </div>
+            </div>
+            <div class="skill">
+                <p>Sleeping</p>
+                <div class="w3-black w3-round-xlarge">
+                    <div class="w3-container w3-center w3-round-xlarge w3-white" style="width:90%">90%</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function w3_open() {
+        document.getElementById("main").style.marginLeft = "25%";
+        document.getElementById("mySidebar").style.width = "25%";
+        document.getElementById("mySidebar").style.display = "block";
+    }
+
+    function w3_close() {
+        document.getElementById("main").style.marginLeft = "0%";
+        document.getElementById("mySidebar").style.display = "none";
+    }
+</script>
+</body>
+</html>
